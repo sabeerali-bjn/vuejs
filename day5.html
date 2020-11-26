@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>-->
+<link rel="shortcut icon" href="./assets/favicon.ico" type="image/vnd.microsoft.icon" />
+</head>
+<body>
+<div id="app">
+<!--
+<h2>{{ message }}</h2>
+<p>{{ p1 }}</p>
+<p>{{ p2 }}</p>
+-->
+<section>
+<div style="float:left;"><img width="373px" style="margin-left:1px;float:left;" height ="210px" v-bind:src="logo"></div>
+<header>
+<h2>{{ headerh2 }}</h2>
+</header>
+
+</section>
+<section>
+  <nav>
+    <ul>
+      <li v-for="navs in leftlinks">
+	  <a v-bind:href="navs.links">{{navs.nav}}</a>
+	  </li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h1>{{ articleh1 }}</h1>
+    <p>{{ articlep1 }}</p>
+    <p>{{ articlep2 }}</p>
+  </article>
+  <div><img width="373px" style="margin-left:1px;" height ="300px" v-bind:src="img"></div>
+</section>
+
+<footer>
+  <p>{{ footerp1 }}</p>
+</footer>
+</div>
+<script>
+var myObject = new Vue({
+  el: '#app',
+  data: {message: "CSS Layout Float", headerh2: "BlueJeans",
+  p1: "In this example, we have created a header, two columns/boxes and a footer. On smaller screens, the columns will stack on top of each other.",
+  p2:"Resize the browser window to see the responsive effect (you will learn more about this in our next chapter - HTML Responsive.)",
+  leftlinks: [{nav: "Home", links:"index.html"}, {nav: "About", links:"day6.html"}, {nav: "Contact", links:"day7.html"}],
+  articleh1: "Stay Connected",
+  articlep1: "Empower Your Remote Workforce with Secure Video Conferencing",
+  articlep2: "BlueJeans Meetings transforms your video conferencing experience by integrating the industry’s highest-fidelity audio and video performance with incredible productivity features and a comprehensive security toolkit to provide you with a distinct competitive advantage every time you join a meeting.",
+  footerp1: "Copyrights@20202",
+  img:"./assets/bjn_vue1.jpg",
+  logo:"./assets/bjn_logo1.jpg"
+  }
+})
+</script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #127fc7;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #218acf;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+padding-left: 125px;
+    padding-top: 50px;
+}
+nav ul li{padding: 10px}
+a{color:#fff}
+article {
+  float: left;
+  padding: 20px;
+  width: 40%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #50a5de;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</body>
+</html>
